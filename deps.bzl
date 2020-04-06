@@ -1,5 +1,10 @@
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
+MAVEN_SERVER_URLS = [
+     "https://maven.google.com",
+     "https://repo1.maven.org/maven2",
+ ]
+
 # https://raw.githubusercontent.com/grpc/grpc/master/third_party/zlib.BUILD
 ZLIB_BUILD = """
 cc_library(
@@ -181,8 +186,8 @@ def com_google_protobuf(**kwargs):
 
 def com_github_grpc_grpc(**kwargs):
     name = "com_github_grpc_grpc"
-    ref = get_ref(name, "v1.20.1", kwargs)
-    sha256 = get_sha256(name, "ba8b08a697b66e14af35da07753583cf32ff3d14dcd768f91b1bbe2e6c07c349", kwargs)
+    ref = get_ref(name, "v1.27.2", kwargs)
+    sha256 = get_sha256(name, "49c1cca77d07877b878b396b42655c71a412dc14bb95d4f959d6c8971a6bb908", kwargs)
     github_archive(name, "grpc", "grpc", ref, sha256)
 
 def io_bazel_rules_dotnet(**kwargs):
